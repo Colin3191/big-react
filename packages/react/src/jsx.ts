@@ -5,14 +5,14 @@ import type {
 	Ref,
 	Props,
 	ElementType,
-	ReactElement
+	ReactElementType
 } from 'shared/ReactType';
 const ReactElement = function (
 	type: Type,
 	key: Key,
 	ref: Ref,
 	props: Props
-): ReactElement {
+): ReactElementType {
 	const element = {
 		$$typeof: REACT_ELEMENT_TYPE,
 		type,
