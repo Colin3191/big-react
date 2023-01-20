@@ -33,7 +33,7 @@ export const jsx = function (
 	const props: Props = {};
 	let ref: Ref = null;
 
-	for (const prop of config) {
+	for (const prop in config) {
 		const val = config[prop];
 		if (prop === 'key') {
 			if (val !== undefined) {
@@ -62,4 +62,30 @@ export const jsx = function (
 	return ReactElement(type, key, ref, props);
 };
 
-export const jsxDEV = jsx;
+// export const jsxDEV = jsx;
+
+export const jsxDEV = function (type: ElementType, config: any) {
+	let key: Key = null;
+	const props: Props = {};
+	let ref: Ref = null;
+
+	for (const prop in config) {
+		const val = config[prop];
+		if (prop === 'key') {
+			if (val !== undefined) {
+				key = '' + val;
+			}
+			continue;
+		}
+		if (props === 'ref') {
+			if (val !== undefined) {
+				ref = val;
+			}
+			continue;
+		}
+		if (Object.hasOwn(config, prop)) {
+			props[prop] = val;
+		}
+	}
+	return ReactElement(type, key, ref, props);
+};
