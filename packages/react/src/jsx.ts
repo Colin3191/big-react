@@ -1,0 +1,67 @@
+import {
+	ElementType,
+	Key,
+	Props,
+	ReactElement,
+	Ref,
+	Type
+} from 'shared/ReactTypes';
+import { REACT_ELEMENT_TYPE } from 'shared/reactSymbols';
+
+// ReactElement
+const ReactElement = function (
+	type: Type,
+	key: Key,
+	ref: Ref,
+	props: Props
+): ReactElement {
+	const element = {
+		$$typeof: REACT_ELEMENT_TYPE,
+		type,
+		key,
+		ref,
+		props,
+		__mark: 'colin'
+	};
+	return element;
+};
+
+export const jsx = (
+	type: ElementType,
+	config: any,
+	...maybeChildren: any[]
+) => {
+	let key: Key = null;
+	let ref: Ref = null;
+	const props: Props = {};
+	for (const prop in config) {
+		const val = config[prop];
+		if (prop === 'key') {
+			if (val !== undefined) {
+				key = val + '';
+			}
+			continue;
+		}
+		if (prop === 'ref') {
+			if (val !== undefined) {
+				ref = val;
+			}
+			continue;
+		}
+		if (Object.hasOwn(config, prop)) {
+			props[prop] = val;
+		}
+	}
+	// children只有一项时，直接赋给children
+	const maybeChildrenLength = maybeChildren.length;
+	if (maybeChildren) {
+		if (maybeChildrenLength === 1) {
+			props.children = maybeChildren[0];
+		} else {
+			props.children = maybeChildren;
+		}
+	}
+	return ReactElement(type, key, ref, props);
+};
+
+export const jsxDEV = jsx;
