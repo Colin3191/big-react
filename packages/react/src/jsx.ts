@@ -2,11 +2,11 @@ import {
 	ElementType,
 	Key,
 	Props,
-	ReactElement,
+	ReactElementType,
 	Ref,
 	Type
 } from 'shared/ReactTypes';
-import { REACT_ELEMENT_TYPE } from 'shared/reactSymbols';
+import { REACT_ELEMENT_TYPE } from 'shared/ReactSymbols';
 
 // ReactElement
 const ReactElement = function (
@@ -14,7 +14,7 @@ const ReactElement = function (
 	key: Key,
 	ref: Ref,
 	props: Props
-): ReactElement {
+): ReactElementType {
 	const element = {
 		$$typeof: REACT_ELEMENT_TYPE,
 		type,
