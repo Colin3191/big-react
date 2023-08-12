@@ -28,7 +28,7 @@ function markUpdateFromFiberToRoot(fiber: FiberNode) {
 	return null;
 }
 
-function renderRoot(root: FiberNode) {
+function renderRoot(root: FiberRootNode) {
 	// 初始化
 	prepareFreshStack(root);
 
@@ -37,7 +37,9 @@ function renderRoot(root: FiberNode) {
 			workLoop();
 			break;
 		} catch (e) {
-			console.warn('work发生错误');
+			if (__dev__) {
+				console.warn('work发生错误');
+			}
 			wokInProgress = null;
 		}
 	} while (true);
