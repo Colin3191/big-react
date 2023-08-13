@@ -16,7 +16,7 @@ export const beginWork = (wip: FiberNode) => {
 			return null;
 		default:
 			if (__dev__) {
-				console.log('beginWork未实现的类型');
+				console.warn('beginWork未实现的情况', wip);
 			}
 			break;
 	}

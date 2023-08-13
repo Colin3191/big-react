@@ -52,7 +52,7 @@ function childReconciler(shouldTrackEffects: boolean) {
 					break;
 			}
 		}
-		// TODO 多节点 ui> li*3
+		// TODO 多节点 ul> li*3
 
 		// HostText
 		if (typeof newChild === 'string' || typeof newChild === 'number') {

@@ -18,6 +18,7 @@ export class FiberNode {
 	memoizedState: any;
 	alternate: FiberNode | null;
 	flags: Flags;
+	subtreeFlags: Flags;
 	updateQueue: any;
 	constructor(tag: WorkTag, pendingProps: Props, key: Key) {
 		/* 作为静态数据结构的属性 */
@@ -47,6 +48,7 @@ export class FiberNode {
 
 		// 副作用
 		this.flags = NoFlags;
+		this.subtreeFlags = NoFlags;
 
 		// 指向该fiber在另一次更新时对应的fiber
 		this.alternate = null;
@@ -81,6 +83,7 @@ export const createWorkInProgress = (
 		// update
 		wip.pendingProps = pendingProps;
 		wip.flags = NoFlags;
+		wip.subtreeFlags = NoFlags;
 		wip.updateQueue = current.updateQueue;
 		wip.child = current.child;
 		wip.memoizedProps = current.memoizedProps;
