@@ -78,6 +78,7 @@ export const createWorkInProgress = (
 		wip.type = current.type;
 		wip.stateNode = current.stateNode;
 		wip.alternate = current;
+		wip.updateQueue = current.updateQueue;
 		current.alternate = wip;
 	} else {
 		// update

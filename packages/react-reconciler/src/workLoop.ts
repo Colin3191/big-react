@@ -40,7 +40,7 @@ function renderRoot(root: FiberRootNode) {
 			break;
 		} catch (e) {
 			if (__dev__) {
-				console.warn('work发生错误');
+				console.error('work发生错误', e);
 			}
 			wokInProgress = null;
 		}

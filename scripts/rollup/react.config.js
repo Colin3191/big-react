@@ -1,12 +1,12 @@
 import { getPackageJSON, resolvePkgPath, getBaseRollupPlugins } from './utils';
 import generatePackageJSON from 'rollup-plugin-generate-package-json';
 
-const { module } = getPackageJSON('react');
+const { module, name } = getPackageJSON('react');
 
 // 包路径
-const pkgPath = resolvePkgPath('react');
+const pkgPath = resolvePkgPath(name);
 //产物路径
-const distPath = resolvePkgPath('react', true);
+const distPath = resolvePkgPath(name, true);
 
 export default [
 	// react
